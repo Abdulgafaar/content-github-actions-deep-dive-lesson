@@ -46,13 +46,20 @@ jobs:
 
    publish: 
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
     steps:
-    - uses: actions/checkout@v2
-    - uses: ncipollo/release-action@v1
-      with:
-        artifacts: "release.tar.gz,foo/*.txt"
-        bodyFile: "body.md"
-        token: ${{ secrets.YOUR_GITHUB_TOKEN }}
+      - name: create release
+        uses: actions/reelease@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.gitbub_token }}
+        with:
+          tag_name: ${{ github.run_number }}
+          release_name: Release from ${{ github.run_number }}
+          body: New release for ${{ github.sha }}. Release notes on the documentation
+          draft: false
+          prerelease: false
+
+
+
+
+  
  
