@@ -63,14 +63,14 @@ jobs:
         with:
           name: zipped-bundle
       - name: upload release
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.github_tooken }}
-      with:
-        upload_url: ${{ steps.create-release.outputs.upload_url }}
-        asset_path: ./${{ github.sha }}.zip
-        asset_name: source_coode_with_libraries.zip
-        asset_content_type: application/zip
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.github_tooken }}
+        with:
+          upload_url: ${{ steps.create-release.outputs.upload_url }}
+          asset_path: ./${{ github.sha }}.zip
+          asset_name: source_coode_with_libraries.zip
+          asset_content_type: application/zip
 
 
 
